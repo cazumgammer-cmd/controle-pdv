@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Controle PDV - Site</title>
+</head>
+<body>
+  <h1>Controle PDV</h1>
+  <p>Aplicação estática que usa Firestore (compat) para armazenamento.</p>
+
+  <!-- Firebase compat libraries -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // Bloco FIREBASE_CONFIG inserido conforme solicitado (compat layer)
+    const FIREBASE_CONFIG = { apiKey: "AIzaSyDR0dzIGbt7oqlutmDHUn58wr-S5vCWcis", authDomain: "pdvloja-a3b18.firebaseapp.com", projectId: "pdvloja-a3b18", storageBucket: "pdvloja-a3b18.firebasestorage.app", messagingSenderId: "383752212670", appId: "1:383752212670:web:d41033d30b249c08070eef", measurementId: "G-4Z14KLYMNC" };
+
+    // Inicializa o Firebase usando a API compat
+    firebase.initializeApp(FIREBASE_CONFIG);
+    const db = firebase.firestore();
+
+    // Exemplo mínimo de uso do Firestore (compat)
+    async function listarProdutos() {
+      try {
+        const snapshot = await db.collection('produtos').limit(10).get();
+        const list = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+        console.log('Produtos:', list);
+      } catch (err) {
+        console.error('Erro ao listar produtos:', err);
+      }
+    }
+
+    // Executa ao carregar
+    listarProdutos();
+  </script>
+</body>
+</html>
