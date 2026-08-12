@@ -1,0 +1,15 @@
+# Node / Editor
+node_modules/
+.env
+.DS_Store
+
+# Build
+dist/
+build/
+
+# Firebase local
+.firebase/
+firebase-debug.log
+
+# Logs
+npm-debug.log*
